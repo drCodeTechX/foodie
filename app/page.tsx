@@ -48,7 +48,27 @@ export default function HomePage() {
         "strIngredient17": "Cornstarch",
         "strIngredient18": "",
         "strIngredient19": "",
-        "strIngredient20": "",
+      "strIngredient20": "",
+        "strIngredient21": "Vegetable Stock",
+"strIngredient22": "Shaoxing Wine",
+"strIngredient23": "White Sugar",
+"strIngredient24": "Chili Oil",
+"strIngredient25": "Black Vinegar",
+"strIngredient26": "Ground Pork",
+"strIngredient27": "Douban Sauce",
+"strIngredient28": "Chili Flakes",
+"strIngredient29": "Corn Oil",
+"strIngredient30": "Rice Wine",
+"strIngredient31": "Toasted Sesame Seeds",
+"strIngredient32": "Green Onions",
+"strIngredient33": "Chili Paste",
+"strIngredient34": "Chicken Broth",
+"strIngredient35": "MSG (optional)",
+"strIngredient36": "Peanut Oil",
+"strIngredient37": "Brown Sugar",
+"strIngredient38": "Red Chili Peppers",
+"strIngredient39": "Black Pepper",
+"strIngredient40": "Sea Salt",
         "strMeasure1": "450g",
         "strMeasure2": "100g ",
         "strMeasure3": "1/2 tbs",
@@ -79,44 +99,44 @@ export default function HomePage() {
     <div className='bg-violet-800 min-h-screen min-w-full'>
         <main>
             <div className='flex flex-col p-6 pl-8'>
-                <p className='font-bold text-2xl text-shadow-fuchsia-500 text-white'>
+                <p className='font-bold text-4xl text-shadow-fuchsia-500 text-white'>
                     Recipe Tour
                 </p>
-                <Card>
+                <Card className='max-w-[70%] ml-[15%]'>
                   <CardHeader>
                     <CardTitle>
-                        <div className='flex flex-row gap-5 items-center bg-red-50'>
+                        <div className='flex flex-row gap-5 items-center'>
                             <div className="flex flex-col gap-2">
-                                <p>Name</p>
-                                <p className='text-gray-500'>{foodRecipe.strMeal}</p>
+                                <p className='text-2xl'>Name</p>
+                                <p className='text-lg text-gray-500'>{foodRecipe.strMeal}</p>
                             </div> 
                             <p>|<br></br>|</p>
                             <div className="flex flex-col gap-2">
-                                <p>Category</p>
-                                <p className='text-gray-500'>{foodRecipe.strCategory}</p>
+                                <p className='text-2xl'>Category</p>
+                                <p className='text-lg text-gray-500'>{foodRecipe.strCategory}</p>
                             </div> 
                             <p>|<br></br>|</p>
                             <div className="flex flex-col gap-2">
-                                <p>Origin</p>
-                                <p className='text-gray-500'>{foodRecipe.strArea}</p>
+                                <p className='text-2xl'>Origin</p>
+                                <p className='text-lg text-gray-500'>{foodRecipe.strArea}</p>
                             </div> 
                         </div>
                       </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex flex-row gap-3 border rounded-xl">
-                      <div className='min-w-[50%] min-h-full bg-yellow-500 rounded-l-2xl relative overflow-clip'>
+                    <div className="flex flex-row gap-3 border rounded-xl h-[600px]">
+                      <div className='w-1/2 aspect-4/3 rounded-l-2xl relative overflow-clip'>
                         <Image
                           src={foodRecipe.strMealThumb}
                           alt='Recipe capture'
                           fill={true}
                         />
                       </div>
-                      <div className='p-2 pb-1'>
-                          <p>
+                      <div className='p-2 pb-1 w-1/2'>
+                          <p className='text-4xl pb-4'>
                               <strong>Ingredients</strong>
                           </p>
-                          <ScrollArea className='w-full h-[95%]'>
+                          <ScrollArea className='h-[90%]'>
                             <ol className='list-inside list-[upper-roman] space-y-2'>
                               {Object.entries(foodRecipe)
                                   .filter(([Key, value]) => {
@@ -125,14 +145,13 @@ export default function HomePage() {
                                     
                                       return isIngredient && isNotEmpty ;
                                   })
-                        .map(([key, value]) => {
+                          .map(([key, value]) => {
                                     const ingredientId = key.substring(13)
                                     
                                   return (
-                                      <li key={key}>
+                                    <li key={key} className='text-2xl'>
                                       {value}
-                                      {ingredientId}
-                                      </li>
+                                    </li>
                                   )
                               })}
                             </ol>
@@ -141,17 +160,27 @@ export default function HomePage() {
                     </div>
             </CardContent>
             <CardFooter>
-              <Accordion type="single" collapsible>
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>Preparation steps</AccordionTrigger>
-                  <AccordionContent>
-                    {foodRecipe.strInstructions}
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+              <Card className='w-full'>
+                <CardContent>
+                  <Accordion type="single" collapsible>
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <p className='text-4xl'>
+                          <strong>Preparation steps</strong>
+                        </p>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <pre className='whitespace-pre-wrap'>
+                        {foodRecipe.strInstructions}
+                        </pre>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </CardContent>
+              </Card>
             </CardFooter>
            
-                </Card>
+            </Card>
             </div>
         </main>
     </div>
