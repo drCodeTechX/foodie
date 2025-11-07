@@ -17,3 +17,4 @@ export default nextConfig;
 ```
 node server.js
 ```
+#For it to run, update the github actions to only upload the standalone folder, otherwise do node [fullpath]
