@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['www.themealdb.com'],
   },
+
+  output: 'standalone'
 };
 
 export default nextConfig;
